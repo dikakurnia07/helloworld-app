@@ -14,6 +14,13 @@ pipeline{
                 git branch: 'main', url: "$GIT_REPO_URL"
             }
         }
+        stage('Install maven'){
+            steps{
+                script{
+                    bat 'mvn clean install'
+                }
+            }
+        }
         stage('Build Docker Image'){
             steps{
                 script{
